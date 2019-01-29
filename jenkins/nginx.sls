@@ -18,6 +18,7 @@
     - user: {{ jenkins.nginx_user }}
     - group: {{ jenkins.nginx_group }}
 
+{#
 extend:
   nginx:
     service:
@@ -25,7 +26,7 @@ extend:
         - file: /etc/nginx/sites-available/jenkins.conf
       - require:
         - file: /etc/nginx/sites-enabled/jenkins.conf
-
+#}
 {% else %}
 
 Add nginx config for jenkins:
@@ -37,6 +38,6 @@ Add nginx config for jenkins:
     - group: {{ jenkins.nginx_group }}
     - mode: 440
     - require:
-      - pkg: jenkins 
+      - pkg: jenkins
 
 {% endif %}
