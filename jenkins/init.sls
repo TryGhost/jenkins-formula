@@ -46,8 +46,8 @@ jenkins:
     - gpgkey: https://pkg.jenkins.io/redhat{{ repo_suffix }}/jenkins.io.key
     {% elif grains['os_family'] == 'Debian' %}
     - file: {{jenkins.deb_apt_source}}
-    - name: deb https://pkg.jenkins.io/debian{{ repo_suffix }} binary/
-    - key_url: https://pkg.jenkins.io/debian{{ repo_suffix }}/jenkins.io.key
+    - name: deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/
+    - key_url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
     {% endif %}
     - require_in:
       - pkg: jenkins
